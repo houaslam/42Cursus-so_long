@@ -1,0 +1,282 @@
+/* XPM */
+static char *result[] = {
+/* columns rows colors chars-per-pixel */
+"352 720 213 2 ",
+"   c black",
+".  c #010101",
+"X  c #000500",
+"o  c #000700",
+"O  c gray5",
+"+  c #0B120B",
+"@  c #0D140D",
+"#  c #19120D",
+"$  c #101010",
+"%  c #181810",
+"&  c #261E19",
+"*  c #172A0C",
+"=  c #182018",
+"-  c #063315",
+";  c #24320C",
+":  c #242417",
+">  c #292018",
+",  c #28231B",
+"<  c #2E2318",
+"1  c #312410",
+"2  c #243518",
+"3  c #213B1F",
+"4  c #1A392F",
+"5  c #212821",
+"6  c #242C22",
+"7  c #2F2D26",
+"8  c #312C21",
+"9  c #332D25",
+"0  c #322F24",
+"q  c #312F27",
+"w  c #2F392F",
+"e  c #2E3E2C",
+"r  c #303020",
+"t  c #313021",
+"y  c #3B3423",
+"u  c #3C3424",
+"i  c #37312B",
+"p  c #393429",
+"a  c #39372F",
+"s  c #323A2C",
+"d  c #3F3D34",
+"f  c #4A3418",
+"g  c #4B351F",
+"h  c #493B27",
+"j  c #423C31",
+"k  c #4A3831",
+"l  c #08441C",
+"z  c #09481F",
+"x  c #09491F",
+"c  c #094C20",
+"v  c #0A4F21",
+"b  c #0B5624",
+"n  c #0B5925",
+"m  c #1A5626",
+"M  c #1F4B30",
+"N  c #0D5131",
+"B  c #2A422C",
+"V  c #205428",
+"C  c #314531",
+"Z  c #354734",
+"A  c #215131",
+"S  c #245939",
+"D  c #37503A",
+"F  c #006D24",
+"G  c #0C6028",
+"H  c #0C6329",
+"J  c #0C632B",
+"K  c #086B2B",
+"L  c #0D682B",
+"P  c #0E6D2F",
+"I  c #1D602A",
+"U  c #187129",
+"Y  c #186D31",
+"T  c #17633F",
+"R  c #0E7030",
+"E  c #107F35",
+"W  c #217D29",
+"Q  c #296B33",
+"!  c #296139",
+"~  c #217131",
+"^  c #297939",
+"/  c #31703D",
+"(  c #4F462B",
+")  c #50412B",
+"_  c #54412E",
+"`  c #56462E",
+"'  c #424131",
+"]  c #474337",
+"[  c #474635",
+"{  c #4A4239",
+"}  c #46483A",
+"|  c #4A483E",
+" . c #504830",
+".. c #634A21",
+"X. c #634939",
+"o. c #7B4D39",
+"O. c #784D3D",
+"+. c #685431",
+"@. c #6B5034",
+"#. c #635139",
+"$. c #635239",
+"%. c #6B533A",
+"&. c #6C643B",
+"*. c #395942",
+"=. c #3E5B41",
+"-. c #31514A",
+";. c #3C6043",
+":. c #29754A",
+">. c #31714A",
+",. c #484840",
+"<. c #4E4F48",
+"1. c #524942",
+"2. c #4A5942",
+"3. c #575345",
+"4. c #5A5142",
+"5. c #5A5542",
+"6. c #5F5B41",
+"7. c #5A5748",
+"8. c #5A554A",
+"9. c #535450",
+"0. c #635542",
+"q. c #6B5942",
+"w. c #6B5D42",
+"e. c #6B554A",
+"r. c #6B594A",
+"t. c #625E50",
+"y. c #645C55",
+"u. c #487150",
+"i. c #63614A",
+"p. c #7A6641",
+"a. c #73614A",
+"s. c #73624F",
+"d. c #7B614A",
+"f. c #7B654A",
+"g. c #6B6552",
+"h. c #7B6952",
+"j. c #796857",
+"k. c #7E6D5A",
+"l. c #6B6D6B",
+"z. c #706860",
+"x. c #737573",
+"c. c #8B6324",
+"v. c #8B662C",
+"b. c #89613E",
+"n. c #8C6D39",
+"m. c #8B6F3F",
+"M. c #8C5D42",
+"N. c #836B42",
+"B. c #846942",
+"V. c #946942",
+"C. c #94714A",
+"Z. c #94794A",
+"A. c #957C4C",
+"S. c #84755A",
+"D. c #8C755A",
+"F. c #A57347",
+"G. c #0F892B",
+"H. c #108239",
+"J. c #109631",
+"K. c #298629",
+"L. c #218A31",
+"P. c #318631",
+"I. c #318E31",
+"U. c #318E39",
+"Y. c #398E39",
+"T. c #139641",
+"R. c #298A4A",
+"E. c #348741",
+"W. c #3D9E4C",
+"Q. c #4A8A4A",
+"!. c #5E8348",
+"~. c #429242",
+"^. c #4AA64A",
+"/. c #42AA52",
+"(. c #4AAE52",
+"). c #4AA25A",
+"_. c #5AAA52",
+"`. c #4ABE52",
+"'. c #5AB252",
+"]. c #52B25A",
+"[. c #53B559",
+"{. c #63BA5A",
+"}. c #638E63",
+"|. c #7BA273",
+" X c #73B273",
+".X c #74B774",
+"XX c #54D85D",
+"oX c #78C752",
+"OX c #5AC373",
+"+X c #62D66A",
+"@X c #6BC373",
+"#X c #77D67E",
+"$X c #C6811E",
+"%X c #908850",
+"&X c #AD864A",
+"*X c #BD8857",
+"=X c #9C927B",
+"-X c #E34B9A",
+";X c #2386B1",
+":X c #3B9FC6",
+">X c #8C8A8C",
+",X c #B5A68C",
+"<X c #FFA3B1",
+"1X c #84DB84",
+"2X c #97E59C",
+"3X c #D6D3AD",
+"4X c #98D9F8",
+"5X c #ADD7F8",
+"6X c #D6CFC6",
+"7X c #FFC6CE",
+"8X c gray97",
+"9X c #FFF5FF",
+"0X c None",
+/* pixels */
+X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0
+"0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0
+"0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0
+"0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0
+"0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0
+"0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0
+"0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0
+"0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X~ ~ ~ ~ 0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0
+"0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X~ ~ ~ ~ J.J.J.J.~ ~ ~ ~ 0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0
+"0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X~ ~ ~ J././././././././././.J.~ ~ ~ 0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0
+"0X0X0X0X0X0X0X0X0X0X0X0X0X0X~ J./.J././././././././././././.J./.J.~ 0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0
+"0X0X0X0X0X0X0X0X0X0X0X0X~ ~ J././.J././././././././././././.J././.J.~ ~ 0X0X0X0X0X0X0X0X0X0X0X0X0X0X0
+"0X0X0X0X0X0X0X0X0X0X0X~ J./.J././././././././././././././././././.J./.J.~ 0X0X0X0X0X0X0X0X0X0X0X0X0X0
+"0X0X0X0X0X0X0X0X0X0X~ J././.J./././././.`./.`.`.`.`./.`./././././.J././.J.~ 0X0X0X0X0X0X0X0X0X0X0X0X0
+"0X0X0X0X0X0X0X0X~ ~ J J././././././.`.`.`.`.`.`.`.`.`.`.`.`././././././.J.J ~ ~ 0X0X0X0X0X0X0X0X0X0X0
+"0X0X0X0X0X0X~ ~ H.H.J /./././././.`.`.`.`.`.XXXXXXXX`.`.`.`.`././././././.J H.H.~ ~ 0X0X0X0X0X0X0X0X0
+"0X0X0X0X0X~ H.H.H.J J./././././.`.`.`.`.XXXXXXXXXXXXXXXX`.`.`.`./././././.J.J H.H.H.~ 0X0X0X0X0X0X0X0
+"0X0X0X0X~ H.J.H.J.J J././././././.`.`.`.XXXXXXXXXXXXXXXX`.`.`././././././.J.J J.H.J.H.~ 0X0X0X0X0X0X0
+"0X0X0X~ H.J.J.J.J.J J./././././.`.`.`.`.XXXXXXXXXXXXXXXX`.`.`.`./././././.J.J J.J.J.J.H.~ 0X0X0X0X0X0
+"0X0X0X~ J.J.J.J.J.J J.J././././.`.`.`.`.`.XX`.XXXX`.XX`.`.`.`.`././././.J.J.J J.J.J.J.J.~ 0X0X0X0X0X0
+"0X0X~ H.J.J.J.J.J.H.J.J./././././.`.`.`.`.`.`.`.`.`.`.`.`.`.`./././././.J.J.H.J.J.J.J.J.H.~ 0X0X0X0X0
+"0X0X~ H.J././.J.J.H.J.J././././.`.`.`.`.`.`.`.`.`.`.`.`.`.`.`.`././././.J.J.H.J.J././.J.H.~ 0X0X0X0X0
+"0X0X~ J.J././.J.J.J.J J.J./././././.`.`.`.`.`.`.`.`.`.`.`.`./././././.J.J.J J.J.J././.J.J.~ 0X0X0X0X0
+"0X0X~ J./././.J.J.J.J J.J.J././././././.`./.`.`.`.`./.`././././././.J.J.J.J J.J.J./././.J.~ 0X0X0X0X0
+"0X~ H.J././././.J.J.H.J J.J.J.J././././././././././././././././.J.J.J.J.J H.J.J././././.J.H.~ 0X0X0X0
+"0X~ H.J././././.J.J.J.H.H.J.J.J.J.J././././././././././././.J.J.J.J.J.H.H.J.J.J././././.J.H.~ 0X0X0X0
+"0X~ J.J.J././.J.J.H.J.J.H.H.J.H.J.J././././././././././././.J.J.H.J.H.H.J.J.H.J.J././.J.J.J.~ 0X0X0X0
+"0X~ J.J.J.J.H.H.H.J.J.J.H.J.H.J J.J.J./.J././././././.J./.J.J.J.J H.J.H.J.J.J.H.H.H.J.J.J.J.~ 0X0X0X0
+"0X~ J.J.J H./././.J.J.J.J.J.J.H.J J.J.J.J.J.J.J.J.J.J.J.J.J.J.J H.J.J.J.J.J.J./././.H.J J.J.~ 0X0X0X0
+"0X~ J.J J././././.J.J.J.J.J.J.J.H.H.H.J.J.J.J.J.J.J.J.J.J.H.H.H.J.J.J.J.J.J.J././././.J.J J.~ 0X0X0X0
+"0X~ H.J /././././././.J.J.J.J.J.J.J.J.H.H.J.H.J.J.H.J.H.H.J.J.J.J.J.J.J.J./././././././.J H.~ 0X0X0X0
+"0X~ J J./././././.`.`././././.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J././././.`.`./././././.J.J ~ 0X0X0X0
+"0X~ J J././././.`.`.`.`.`./././.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J./././.`.`.`.`.`././././.J.J ~ 0X0X0X0
+"0X~ J J.J./././.`.`.`.`.`./././.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J.J./././.`.`.`.`.`./././.J.J.J ~ 0X0X0X0
+"0X~ H.J.J././././.`.`./././././.J.J.H.J.J.H.H.J.J.H.H.J.J.H.J.J./././././.`.`././././.J.J.H.~ 0X0X0X0
+"0X~ H.J.J.J./././././././././.J.J.H.J J H.J.J.J.J.J.J.H.J J H.J.J./././././././././.J.J.J.H.~ 0X0X0X0
+"0X~ H.J.J.J.J.J././././.J.J.J.H.H.J.J.J.J.J.J.J.J.J.J.J.J.J.J.H.H.J.J.J././././.J.J.J.J.J.H.~ 0X0X0X0
+"0X~ H.H.J.J.J.J.J.J.J.J.J.J.J J.J.J.J.J.J.J././././.J.J.J.J.J.J.J.J J.J.J.J.J.J.J.J.J.J.H.H.~ 0X0X0X0
+"0X~ H.H.J.J.J.J.J.J.J.J.J.J H.J.J.J.J././././.`.`././././.J.J.J.J.H.J J.J.J.J.J.J.J.J.J.H.H.~ 0X0X0X0
+"0X~ H.H.H.J.J.J.J.J.J.J.H.J J.J.J.J./././.`.`.`.`.`.`./././.J.J.J.J.J H.J.J.J.J.J.J.J.H.H.H.~ 0X0X0X0
+"0X~ H.H.H.H.H.J.J.H.H.H.H.J J.J.J.J./././.`.`.`.`.`.`./././.J.J.J.J.J H.H.H.H.J.J.H.H.H.H.H.~ 0X0X0X0
+"0X~ H.J H.H.H.H.H.H.H.H.J H.J.J.J.J./././././.`.`./././././.J.J.J.J.H.J H.H.H.H.H.H.H.H.J H.~ 0X0X0X0
+"0X~ H.J H.H.H.H.H.J H.H.J H.J.J.J.J././././././././././././.J.J.J.J.H.J H.H.J H.H.H.H.H.J H.~ 0X0X0X0
+"0X~ J ~ H.H.J H.H.J H.H.~ H.H.J.J.J.J././././././././././.J.J.J.J.H.H.~ H.H.J H.H.J H.H.~ J ~ 0X0X0X0
+"0X~ J ~ H.H.J H.H.J H.J ~ H.J J.J.J.J.J.J.J././././.J.J.J.J.J.J.J.J H.~ J H.J H.H.J H.H.~ J ~ 0X0X0X0
+"0X0X~ ~ H.J J H.H.J J J ~ H.J H.H.J.J.J.J.J.J.J.J.J.J.J.J.J.J.H.H.J H.~ J J J H.H.J J H.~ ~ 0X0X0X0X0
+"0X0X0X~ J J ~ H.H.J J J ~ J J H.J H.H.H.J.J.H.J.J.H.J.J.H.H.H.J H.J J ~ J J J H.H.~ J J ~ 0X0X0X0X0X0
+"0X0X0X,.J J ~ H.H.~ J J ,.J ~ J J H.H.J H.H.H.H.H.H.H.H.J H.H.J J ~ J ,.J J ~ H.H.~ J J ,.0X0X0X0X0X0
+"0X0X0X0X,.,.~ H.J ~ ,.,.0X,.,.J ~ H.H.J H.H.J H.H.J H.H.J H.H.~ J ,.,.J ,.,.~ J H.~ ,.,.0X0X0X0X0X0X0
+"0X0X0X0X0X0X,.J J ,.0X0X0X0X0X,.~ H.J J J H.J J J J H.J J J H.~ ,.0X0X0X0X0X,.J J ,.0X0X0X0X0X0X0X0X0
+"0X0X0X0X0X0X0X,.,.0X0X0X0X0X0Xy.,.J J ~ J J ~ J J ~ J J ~ J J ,.y.0X0X0X0X0X0X,.,.0X0X0X0X0X0X0X0X0X0
+"0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X,.y.,.,.~ J J ~ ,.,.~ J J ~ ,.,.y.,.0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0
+"0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X,.z.y.z.,.J J ,.z.z.,.J J ,.z.y.z.,.0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0
+"0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X,.z.y.%X%X,.,.z.z.z.z.,.,.%X%Xy.z.,.0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0
+"0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X,.y.z.%Xz.z.z.%Xz.z.%Xz.z.z.%Xz.y.,.0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0
+"0X0X0X0X0X0X0X0X0X0X0X0X0X0X0Xy.,.z.%Xz.y.z.%X%X%X%Xz.y.z.%Xz.,.y.0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0
+"0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X,.z.z.y.y.z.z.%X%Xz.z.y.y.z.z.,.0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0
+"0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X,.,.y.,.y.z.z.z.z.y.,.y.,.,.0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0
+"0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X,.,.,.y.z.z.y.,.,.,.0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0
+"0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X,.,.,.,.0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0
+"0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0
+"0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0
+"0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0
+"0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0X0
