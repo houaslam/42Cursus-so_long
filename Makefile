@@ -6,7 +6,7 @@
 #    By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/16 12:10:20 by houaslam          #+#    #+#              #
-#    Updated: 2023/01/18 14:02:13 by houaslam         ###   ########.fr        #
+#    Updated: 2023/01/19 14:00:08 by houaslam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ all : ${NAME}
 OBJ = ${SRCS:.c=.o}
 
 ${NAME} : ${OBJ}
-	cc  ${CFLAGS} -lmlx -framework OpenGL -framework AppKit ${OBJ} -o ${NAME}
+	cc  ${CFLAGS} -lmlx -framework OpenGL -framework AppKit -fsanitize=address ${OBJ} -o ${NAME}
 
 clean :
 	rm -f ${OBJ}

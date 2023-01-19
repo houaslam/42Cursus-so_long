@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 13:51:43 by houaslam          #+#    #+#             */
-/*   Updated: 2023/01/18 14:12:44 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/01/19 14:36:21 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,22 @@ char *path_find(char av, t_data img, int *i)
     if (av == 'P')
     {
         img.path = "img/ghost_f.xpm";
+        
         *i = *i + 1;
     }
     else if (av == '0')
         img.path = "img/floor.xpm";
     else if (av == 'C')
-        img.path = "img/front.xpm";
+        img.path = "img/collect_f.xpm";
     else if (av == 'E')
-        img.path = "img/front.xpm";
+        img.path = "img/exit.xpm";
     else if (av == '1')
-        img.path = "img/tree.xpm";
-    else
-	{
-        write(1, "Error", 5);
-		exit(1);
-	}
+        img.path = "img/wall.xpm";
+    // else
+	// {
+    //     write(1, "Error", 5);
+	// 	exit(1);
+	// }
     return(img.path);
 }
 
@@ -95,23 +96,3 @@ int	ft_exit(mlx_data *mlx)
 	mlx_destroy_window(mlx->mlx, mlx->mlx_win);
 	exit(0);
 }
-
-// char **read_data(mlx_data *mlx, char **av)
-// {
-//     char **ptr;
-    
-//     ptr = malloc(sizeof(char **));
-//     mlx->fd = open(av[1], O_RDONLY);
-//     if(mlx->fd < 0)
-//         ft_putstr_fd("map Error");
-//     ptr[mlx->size_x] = get_next_line(mlx->fd);
-//     while(ptr[mlx->size_x])
-//     {
-//         mlx->size_y = 0;
-//         while(ptr[mlx->size_x][mlx->size_y])
-//             mlx->size_y++;
-//         mlx->size_x++;
-//         ptr[mlx->size_x] = get_next_line(mlx->fd);
-//     }
-//     return(ptr);
-// }

@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:07:21 by houaslam          #+#    #+#             */
-/*   Updated: 2023/01/18 14:08:42 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/01/19 14:37:00 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,15 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE	1
 # endif
+
+#define up 13
+#define arrow_up 126
+#define down 1
+#define arrow_down 125
+#define left 0
+#define arrow_left 123
+#define right 2
+#define arrow_right 124
 
 typedef struct	s_data {
 	void	*img;
@@ -33,6 +42,12 @@ typedef struct	mlx {
 	int size_x;
 	int size_y;
 }			mlx_data;
+
+
+typedef struct	player {
+	int x;
+	int y;
+}			player_data;
 
 typedef struct data{
 	int b;

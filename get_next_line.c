@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 14:43:45 by houaslam          #+#    #+#             */
-/*   Updated: 2023/01/17 13:59:05 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/01/18 22:28:18 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,6 @@ char	*after(char *buf)
 		str[i] = buf[i];
 		i++;
 	}
-	// if (buf[i] == '\n')
-	// {
-	// 	str[i] = buf[i];
-	// 	i++;
-	// }
 	i++;
 	str[i] = '\0';
 	return (str);
