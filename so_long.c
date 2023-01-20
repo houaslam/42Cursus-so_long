@@ -6,90 +6,124 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:22:45 by houaslam          #+#    #+#             */
-/*   Updated: 2023/01/19 14:34:12 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/01/20 01:24:48 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	ft_moves(int keycode, mlx_data *data)
+int	ft_moves(int keycode, t_mlx *mlx)
 {
 	if (keycode == 53)
-		ft_exit(data);
-    else if (keycode == left || keycode == arrow_left)
-		ft_exit(data);
-    else if (keycode == up || keycode == arrow_up)
-		ft_exit(data);
-    else if (keycode == down || keycode == arrow_down)
-		ft_exit(data);
-    else if (keycode == right || keycode == arrow_right)
-		ft_exit(data);
+		ft_exit(mlx);
+	else if (keycode == left || keycode == arrow_left)
+	{
+		mlx_put_image_to_window(mlx->mlx, mlx->mlx_win, mlx->floor, (mlx->img_x) * mlx->p_x, mlx->img_y * mlx->p_y);
+		mlx->p_x--;
+		mlx_put_image_to_window(mlx->mlx, mlx->mlx_win, mlx->ghost_f, (mlx->img_x) * mlx->p_x, mlx->img_y * mlx->p_y);
+	}
+	else if (keycode == up || keycode == arrow_up)
+	{
+		mlx_put_image_to_window(mlx->mlx, mlx->mlx_win, mlx->floor, (mlx->img_x) * mlx->p_x, mlx->img_y * mlx->p_y);
+		mlx->p_y--;
+		mlx_put_image_to_window(mlx->mlx, mlx->mlx_win, mlx->ghost_f, (mlx->img_x) * mlx->p_x, mlx->img_y * mlx->p_y);
+	}
+	else if (keycode == down || keycode == arrow_down)
+	{
+		mlx_put_image_to_window(mlx->mlx, mlx->mlx_win, mlx->floor, (mlx->img_x) * mlx->p_x, mlx->img_y * mlx->p_y);
+		mlx->p_y++;
+		mlx_put_image_to_window(mlx->mlx, mlx->mlx_win, mlx->ghost_f, (mlx->img_x) * mlx->p_x, mlx->img_y * mlx->p_y);
+	}
+	else if (keycode == right || keycode == arrow_right)
+	{
+		mlx_put_image_to_window(mlx->mlx, mlx->mlx_win, mlx->floor, (mlx->img_x) * mlx->p_x, mlx->img_y * mlx->p_y);
+		mlx->p_x++;
+		mlx_put_image_to_window(mlx->mlx, mlx->mlx_win, mlx->ghost_f, (mlx->img_x) * mlx->p_x, mlx->img_y * mlx->p_y);
+	}
 	return (0);
 }
 
-void make_path(mlx_data mlx, t_data img, char **ptr)
+void	make_path(t_mlx *mlx, char **ptr)
 {
-	int_data data;
-
-    data.i = 0;
-    data.k = 0;
-    while(ptr[data.i])
-    {
-       	data.j = 0;
-        while(ptr[data.i][data.j])
-        {
-            img.path = "img/floor.xpm";
-            put_image(mlx, img, data);
-            img.path = path_find(ptr[data.i][data.j], img, &data.k);
-            printf("%s\n", img.path);
-            put_image(mlx, img, data);
-            data.j++;
-        }
-        data.i++;
-    }
-    path_prot(ptr);
+	mlx->i = 0;
+	while (ptr[mlx->i])
+	{
+		mlx->j = 0;
+		while (ptr[mlx->i][mlx->j])
+		{
+			mlx_put_image_to_window(mlx->mlx, mlx->mlx_win, \
+			mlx->floor, (mlx->img_x) * mlx->j, mlx->img_y * mlx->i);
+			path_find(ptr[mlx->i][mlx->j], *mlx);
+			mlx->j++;
+		}
+		mlx->i++;
+	}
+	path_prot(ptr);
 }
 
-char **read_data(mlx_data *mlx, char **av)
+char	**read_data(t_mlx *mlx, char **av)
 {
-    char **ptr;
-    
-    ptr = malloc(sizeof(char **));
-    mlx->fd = open(av[1], O_RDONLY);
-    if(mlx->fd < 0)
-        ft_putstr_fd("map Error");
-    ptr[mlx->size_y] = get_next_line(mlx->fd);
-    while(ptr[mlx->size_y])
-    {
-        mlx->size_x = 0;
-        while(ptr[mlx->size_y][mlx->size_x])
-            mlx->size_x++;
-        mlx->size_y++;
-        ptr[mlx->size_y] = get_next_line(mlx->fd);
-    }
-    return(ptr);
+	char	**ptr;
+	int		fd;
+
+	ptr = malloc(sizeof(char **));
+	fd = open(av[1], O_RDONLY);
+	if (fd < 0)
+		ft_putstr_fd("map Error");
+	ptr[mlx->win_y] = get_next_line(fd);
+	while (ptr[mlx->win_y])
+	{
+		mlx->win_x = 0;
+		while (ptr[mlx->win_y][mlx->win_x])
+		{
+			if (ptr[mlx->win_y][mlx->win_x] == 'P')
+			{
+				mlx->p_x = mlx->win_x;
+				mlx->p_y = mlx->win_y;
+			}
+			mlx->win_x++;
+		}
+		mlx->win_y++;
+		ptr[mlx->win_y] = get_next_line(fd);
+	}
+	return (ptr);
 }
 
-
-int main(int ac ,char **av)
+int	main(int ac, char **av)
 {
-    mlx_data mlx;
-    t_data	img;
-    char **ptr;
+	t_mlx	mlx;
+	char	**ptr;
 
-    (void)ac;
-    img.x = 0;
-    img.y = 0;
-    mlx.mlx = mlx_init();
+	(void)ac;
+	mlx.img_x = 0;
+	mlx.img_y = 0;
+	mlx.mlx = mlx_init();
+	init(&mlx);
 	ptr = read_data(&mlx, av);
-    printf("%d\n", mlx.size_x);
-    printf("%d\n", mlx.size_y);
-    mlx.size_x--;
-	mlx.mlx_win = mlx_new_window(mlx.mlx, mlx.size_x * 40, mlx.size_y * 40, "so_long");
-    img.img = mlx_new_image(mlx.mlx, 40, 40);
-    make_path(mlx, img, ptr);
+	printf("%d\n", mlx.win_x);
+	printf("%d\n", mlx.win_y);
+	mlx.win_x--;
+	if (mlx.win_x <= mlx.win_y)
+		ft_putstr_fd("map should be rectangular");
+	mlx.mlx_win = mlx_new_window(mlx.mlx, \
+	mlx.win_x * 40, mlx.win_y * 40, "so_long");
+	make_path(&mlx, ptr);
 	mlx_hook(mlx.mlx_win, 17, 0, ft_exit, &mlx);
 	mlx_key_hook(mlx.mlx_win, ft_moves, &mlx);
-    // ft_freestr(ptr, mlx.size_y);
 	mlx_loop(mlx.mlx);
 }
+
+void	init(t_mlx *mlx)
+{
+	mlx->ghost_f = mlx_xpm_file_to_image(mlx->mlx \
+	, "img/ghost_f.xpm", &mlx->p_x, &mlx->p_y);
+	mlx->exit = mlx_xpm_file_to_image(mlx->mlx \
+	, "img/exit.xpm", &mlx->img_x, &mlx->img_y);
+	mlx->wall = mlx_xpm_file_to_image(mlx->mlx \
+	, "img/wall.xpm", &mlx->img_x, &mlx->img_y);
+	mlx->floor = mlx_xpm_file_to_image(mlx->mlx \
+	, "img/floor.xpm", &mlx->img_x, &mlx->img_y);
+	mlx->collect_f = mlx_xpm_file_to_image(mlx->mlx \
+	, "img/collect_f.xpm", &mlx->img_x, &mlx->img_y);
+}
+

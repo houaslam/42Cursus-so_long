@@ -1,4 +1,0 @@
-path find need **ptr
-path prot need **ptr
-make path creat **ptr
-int main need **ptr
