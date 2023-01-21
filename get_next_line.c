@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 14:43:45 by houaslam          #+#    #+#             */
-/*   Updated: 2023/01/18 22:28:18 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/01/21 17:35:14 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ char	*after(char *buf)
 		str[i] = buf[i];
 		i++;
 	}
-	i++;
 	str[i] = '\0';
 	return (str);
 }
@@ -100,4 +99,30 @@ char	*get_next_line(int fd)
 	line = after(buf);
 	buf = ft_handle(buf);
 	return (line);
+}
+
+int	ft_strnstr(char *big, char *small)
+{
+	size_t	j;
+	size_t	i;
+	size_t	len;
+	int		len1;
+
+	j = 0;
+	i = 0;
+	len = ft_strlen(big) - 1;
+	len1 = ft_strlen(small) - 1;
+	while (big[len - j] && j <= ft_strlen(small))
+	{
+		while (big[len - j] == small[len1 - i] \
+		&& small[len1 - i] && big[len - j])
+		{
+			i++;
+			j++;
+			if (len1 - i == 0)
+				return (1);
+		}
+		j++;
+	}
+	return (0);
 }

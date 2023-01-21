@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:22:45 by houaslam          #+#    #+#             */
-/*   Updated: 2023/01/20 01:24:48 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/01/21 18:55:35 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,33 @@
 int	ft_moves(int keycode, t_mlx *mlx)
 {
 	if (keycode == 53)
+	{
+		printf("GAME OVER !!");
 		ft_exit(mlx);
-	else if (keycode == left || keycode == arrow_left)
-	{
-		mlx_put_image_to_window(mlx->mlx, mlx->mlx_win, mlx->floor, (mlx->img_x) * mlx->p_x, mlx->img_y * mlx->p_y);
-		mlx->p_x--;
-		mlx_put_image_to_window(mlx->mlx, mlx->mlx_win, mlx->ghost_f, (mlx->img_x) * mlx->p_x, mlx->img_y * mlx->p_y);
 	}
-	else if (keycode == up || keycode == arrow_up)
+	else if (keycode == LEFT || keycode == ARROW_LEFT)
 	{
-		mlx_put_image_to_window(mlx->mlx, mlx->mlx_win, mlx->floor, (mlx->img_x) * mlx->p_x, mlx->img_y * mlx->p_y);
-		mlx->p_y--;
-		mlx_put_image_to_window(mlx->mlx, mlx->mlx_win, mlx->ghost_f, (mlx->img_x) * mlx->p_x, mlx->img_y * mlx->p_y);
+		left_move(mlx);
+		mlx->steps++;
+		printf("NUM = %d\n", mlx->steps);
 	}
-	else if (keycode == down || keycode == arrow_down)
+	else if (keycode == UP || keycode == ARROW_UP)
 	{
-		mlx_put_image_to_window(mlx->mlx, mlx->mlx_win, mlx->floor, (mlx->img_x) * mlx->p_x, mlx->img_y * mlx->p_y);
-		mlx->p_y++;
-		mlx_put_image_to_window(mlx->mlx, mlx->mlx_win, mlx->ghost_f, (mlx->img_x) * mlx->p_x, mlx->img_y * mlx->p_y);
+		up_move(mlx);
+		mlx->steps++;
+		printf("NUM = %d\n", mlx->steps);
 	}
-	else if (keycode == right || keycode == arrow_right)
+	else if (keycode == DOWN || keycode == ARROW_DOWN)
 	{
-		mlx_put_image_to_window(mlx->mlx, mlx->mlx_win, mlx->floor, (mlx->img_x) * mlx->p_x, mlx->img_y * mlx->p_y);
-		mlx->p_x++;
-		mlx_put_image_to_window(mlx->mlx, mlx->mlx_win, mlx->ghost_f, (mlx->img_x) * mlx->p_x, mlx->img_y * mlx->p_y);
+		down_move(mlx);
+		mlx->steps++;
+		printf("NUM = %d\n", mlx->steps);
+	}
+	else if (keycode == RIGHT || keycode == ARROW_RIGHT)
+	{
+		right_move(mlx);
+		mlx->steps++;
+		printf("NUM = %d\n", mlx->steps);
 	}
 	return (0);
 }
@@ -58,25 +61,25 @@ void	make_path(t_mlx *mlx, char **ptr)
 		}
 		mlx->i++;
 	}
-	path_prot(ptr);
+	path_prot(ptr, mlx);
 }
 
-char	**read_data(t_mlx *mlx, char **av)
+void	read_data(t_mlx *mlx)
 {
-	char	**ptr;
-	int		fd;
-
-	ptr = malloc(sizeof(char **));
-	fd = open(av[1], O_RDONLY);
-	if (fd < 0)
-		ft_putstr_fd("map Error");
-	ptr[mlx->win_y] = get_next_line(fd);
-	while (ptr[mlx->win_y])
+	mlx->win_y = 0;
+	mlx->ptr = malloc(sizeof(char **));
+	mlx->ptr[mlx->win_y] = get_next_line(mlx->fd);
+	if (!mlx->ptr[mlx->win_y])
+	{
+		free(mlx->ptr[mlx->win_y]);
+		ft_putstr_fd("invalid map");
+	}
+	while (mlx->ptr[mlx->win_y])
 	{
 		mlx->win_x = 0;
-		while (ptr[mlx->win_y][mlx->win_x])
+		while (mlx->ptr[mlx->win_y][mlx->win_x])
 		{
-			if (ptr[mlx->win_y][mlx->win_x] == 'P')
+			if (mlx->ptr[mlx->win_y][mlx->win_x] == 'P')
 			{
 				mlx->p_x = mlx->win_x;
 				mlx->p_y = mlx->win_y;
@@ -84,46 +87,95 @@ char	**read_data(t_mlx *mlx, char **av)
 			mlx->win_x++;
 		}
 		mlx->win_y++;
-		ptr[mlx->win_y] = get_next_line(fd);
+		mlx->ptr[mlx->win_y] = get_next_line(mlx->fd);
 	}
-	return (ptr);
+}
+int frame(t_mlx *mlx)
+{
+	if (mlx->fram == 5000)
+	{
+		mlx->collect_f = mlx_xpm_file_to_image(mlx->mlx \
+			, "textures/collect_f.xpm", &mlx->img_x, &mlx->img_y);
+		make_coins(mlx);
+		mlx->fram++;
+	}
+	else if (mlx->fram == 10000)
+	{
+		mlx->collect_f = mlx_xpm_file_to_image(mlx->mlx \
+			, "textures/collect_f2.xpm", &mlx->img_x, &mlx->img_y);
+		make_coins(mlx);
+		mlx->fram++;
+	}
+	else if (mlx->fram == 15000)
+	{
+		mlx->collect_f = mlx_xpm_file_to_image(mlx->mlx \
+			, "textures/collect_f3.xpm", &mlx->img_x, &mlx->img_y);
+		make_coins(mlx);
+		mlx->fram++;
+	}
+	else if (mlx->fram == 20000)
+	{
+		mlx->collect_f = mlx_xpm_file_to_image(mlx->mlx \
+			, "textures/collect_f4.xpm", &mlx->img_x, &mlx->img_y);
+		make_coins(mlx);
+		mlx->fram++;
+	}
+	else if (mlx->fram == 25000)
+	{
+		mlx->collect_f = mlx_xpm_file_to_image(mlx->mlx \
+			, "textures/collect_f5.xpm", &mlx->img_x, &mlx->img_y);
+		make_coins(mlx);
+		mlx->fram++;
+	}
+	else if (mlx->fram == 30000)
+	{
+		mlx->collect_f = mlx_xpm_file_to_image(mlx->mlx \
+			, "textures/collect_f6.xpm", &mlx->img_x, &mlx->img_y);
+		make_coins(mlx);
+		mlx->fram++;
+	}
+	else if (mlx->fram == 35000)
+	{
+		mlx->collect_f = mlx_xpm_file_to_image(mlx->mlx \
+			, "textures/collect_f7.xpm", &mlx->img_x, &mlx->img_y);
+		make_coins(mlx);
+		mlx->fram++;
+	}
+	else if (mlx->fram == 40000)
+	{
+		mlx->collect_f = mlx_xpm_file_to_image(mlx->mlx \
+			, "textures/collect_f8.xpm", &mlx->img_x, &mlx->img_y);
+		make_coins(mlx);
+		mlx->fram = 0;
+	}
+	else
+		mlx->fram++;
+	return (0);
 }
 
 int	main(int ac, char **av)
 {
 	t_mlx	mlx;
-	char	**ptr;
 
 	(void)ac;
 	mlx.img_x = 0;
 	mlx.img_y = 0;
+	mlx.fram = 0;
 	mlx.mlx = mlx_init();
+	if (mlx.mlx == NULL)
+		exit(1);
 	init(&mlx);
-	ptr = read_data(&mlx, av);
-	printf("%d\n", mlx.win_x);
-	printf("%d\n", mlx.win_y);
-	mlx.win_x--;
-	if (mlx.win_x <= mlx.win_y)
-		ft_putstr_fd("map should be rectangular");
+	arg_prot(&mlx, av);
+	read_data(&mlx);
+	map_prot(mlx);
 	mlx.mlx_win = mlx_new_window(mlx.mlx, \
 	mlx.win_x * 40, mlx.win_y * 40, "so_long");
-	make_path(&mlx, ptr);
+	if (mlx.mlx_win == NULL)
+		exit(1);
+	make_path(&mlx, mlx.ptr);
 	mlx_hook(mlx.mlx_win, 17, 0, ft_exit, &mlx);
+	mlx.steps = 0;
 	mlx_key_hook(mlx.mlx_win, ft_moves, &mlx);
+	mlx_loop_hook(mlx.mlx, frame, &mlx);
 	mlx_loop(mlx.mlx);
 }
-
-void	init(t_mlx *mlx)
-{
-	mlx->ghost_f = mlx_xpm_file_to_image(mlx->mlx \
-	, "img/ghost_f.xpm", &mlx->p_x, &mlx->p_y);
-	mlx->exit = mlx_xpm_file_to_image(mlx->mlx \
-	, "img/exit.xpm", &mlx->img_x, &mlx->img_y);
-	mlx->wall = mlx_xpm_file_to_image(mlx->mlx \
-	, "img/wall.xpm", &mlx->img_x, &mlx->img_y);
-	mlx->floor = mlx_xpm_file_to_image(mlx->mlx \
-	, "img/floor.xpm", &mlx->img_x, &mlx->img_y);
-	mlx->collect_f = mlx_xpm_file_to_image(mlx->mlx \
-	, "img/collect_f.xpm", &mlx->img_x, &mlx->img_y);
-}
-
