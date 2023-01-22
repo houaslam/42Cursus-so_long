@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:07:21 by houaslam          #+#    #+#             */
-/*   Updated: 2023/01/21 17:36:18 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/01/22 18:30:31 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <unistd.h>
+# include "printf/ft_printf.h"
 
 # define UP 13
 # define ARROW_UP 126
@@ -66,9 +67,9 @@ typedef struct data{
 	int				i;
 	int				j;
 	int				k;
-	int				size_x;
 	unsigned int	len;
-	int				size_y;
+	int				exit_n;
+	int				collect_n;
 }	t_data;
 
 //so_long 
@@ -85,6 +86,9 @@ int		ft_exit(t_mlx *mlx);
 void	make_coins(t_mlx *mlx);
 void	put1_image(t_mlx *mlx, void *texture);
 void	arg_prot(t_mlx *mlx, char **av);
+void	steps(t_mlx *mlx, int keycode);
+void	flood_fill(int x, int y, t_mlx mlx, t_data *data);
+void	check_int(t_mlx mlx);
 
 //moves
 

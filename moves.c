@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 05:00:53 by houaslam          #+#    #+#             */
-/*   Updated: 2023/01/21 17:36:59 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/01/22 18:12:37 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	left_move(t_mlx *mlx)
 		put1_image(mlx, mlx->floor);
 		mlx->p_x--;
 		put1_image(mlx, mlx->ghost_l);
+		ft_printf("GAME OVER!!");
 		exit(0);
 	}
 }
@@ -62,6 +63,7 @@ void	down_move(t_mlx *mlx)
 		put1_image(mlx, mlx->floor);
 		mlx->p_y++;
 		put1_image(mlx, mlx->ghost_f);
+		ft_printf("GAME OVER!!");
 		exit(0);
 	}
 }
@@ -89,6 +91,7 @@ void	right_move(t_mlx *mlx)
 		put1_image(mlx, mlx->floor);
 		mlx->p_x++;
 		put1_image(mlx, mlx->ghost_r);
+		ft_printf("GAME OVER!!");
 		exit(0);
 	}
 }
@@ -116,6 +119,7 @@ void	up_move(t_mlx *mlx)
 		put1_image(mlx, mlx->floor);
 		mlx->p_y--;
 		put1_image(mlx, mlx->ghost_b);
+		ft_printf("GAME OVER!!");
 		exit(0);
 	}
 }

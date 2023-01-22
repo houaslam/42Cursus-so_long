@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:22:45 by houaslam          #+#    #+#             */
-/*   Updated: 2023/01/21 18:55:35 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/01/22 23:33:15 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,35 +14,21 @@
 
 int	ft_moves(int keycode, t_mlx *mlx)
 {
-	if (keycode == 53)
+	if (keycode == LEFT || keycode == ARROW_LEFT)
+		left_move(mlx);
+	else if (keycode == UP || keycode == ARROW_UP)
+		up_move(mlx);
+	else if (keycode == DOWN || keycode == ARROW_DOWN)
+		down_move(mlx);
+	else if (keycode == RIGHT || keycode == ARROW_RIGHT)
+		right_move(mlx);
+	else if (keycode == 53)
 	{
-		printf("GAME OVER !!");
+		ft_printf("GAME OVER !!");
 		ft_exit(mlx);
 	}
-	else if (keycode == LEFT || keycode == ARROW_LEFT)
-	{
-		left_move(mlx);
-		mlx->steps++;
-		printf("NUM = %d\n", mlx->steps);
-	}
-	else if (keycode == UP || keycode == ARROW_UP)
-	{
-		up_move(mlx);
-		mlx->steps++;
-		printf("NUM = %d\n", mlx->steps);
-	}
-	else if (keycode == DOWN || keycode == ARROW_DOWN)
-	{
-		down_move(mlx);
-		mlx->steps++;
-		printf("NUM = %d\n", mlx->steps);
-	}
-	else if (keycode == RIGHT || keycode == ARROW_RIGHT)
-	{
-		right_move(mlx);
-		mlx->steps++;
-		printf("NUM = %d\n", mlx->steps);
-	}
+	mlx->steps++;
+	ft_printf("NUM = %d\n", mlx->steps);
 	return (0);
 }
 
@@ -67,6 +53,7 @@ void	make_path(t_mlx *mlx, char **ptr)
 void	read_data(t_mlx *mlx)
 {
 	mlx->win_y = 0;
+	mlx->win_x = 0;
 	mlx->ptr = malloc(sizeof(char **));
 	mlx->ptr[mlx->win_y] = get_next_line(mlx->fd);
 	if (!mlx->ptr[mlx->win_y])
@@ -90,68 +77,6 @@ void	read_data(t_mlx *mlx)
 		mlx->ptr[mlx->win_y] = get_next_line(mlx->fd);
 	}
 }
-int frame(t_mlx *mlx)
-{
-	if (mlx->fram == 5000)
-	{
-		mlx->collect_f = mlx_xpm_file_to_image(mlx->mlx \
-			, "textures/collect_f.xpm", &mlx->img_x, &mlx->img_y);
-		make_coins(mlx);
-		mlx->fram++;
-	}
-	else if (mlx->fram == 10000)
-	{
-		mlx->collect_f = mlx_xpm_file_to_image(mlx->mlx \
-			, "textures/collect_f2.xpm", &mlx->img_x, &mlx->img_y);
-		make_coins(mlx);
-		mlx->fram++;
-	}
-	else if (mlx->fram == 15000)
-	{
-		mlx->collect_f = mlx_xpm_file_to_image(mlx->mlx \
-			, "textures/collect_f3.xpm", &mlx->img_x, &mlx->img_y);
-		make_coins(mlx);
-		mlx->fram++;
-	}
-	else if (mlx->fram == 20000)
-	{
-		mlx->collect_f = mlx_xpm_file_to_image(mlx->mlx \
-			, "textures/collect_f4.xpm", &mlx->img_x, &mlx->img_y);
-		make_coins(mlx);
-		mlx->fram++;
-	}
-	else if (mlx->fram == 25000)
-	{
-		mlx->collect_f = mlx_xpm_file_to_image(mlx->mlx \
-			, "textures/collect_f5.xpm", &mlx->img_x, &mlx->img_y);
-		make_coins(mlx);
-		mlx->fram++;
-	}
-	else if (mlx->fram == 30000)
-	{
-		mlx->collect_f = mlx_xpm_file_to_image(mlx->mlx \
-			, "textures/collect_f6.xpm", &mlx->img_x, &mlx->img_y);
-		make_coins(mlx);
-		mlx->fram++;
-	}
-	else if (mlx->fram == 35000)
-	{
-		mlx->collect_f = mlx_xpm_file_to_image(mlx->mlx \
-			, "textures/collect_f7.xpm", &mlx->img_x, &mlx->img_y);
-		make_coins(mlx);
-		mlx->fram++;
-	}
-	else if (mlx->fram == 40000)
-	{
-		mlx->collect_f = mlx_xpm_file_to_image(mlx->mlx \
-			, "textures/collect_f8.xpm", &mlx->img_x, &mlx->img_y);
-		make_coins(mlx);
-		mlx->fram = 0;
-	}
-	else
-		mlx->fram++;
-	return (0);
-}
 
 int	main(int ac, char **av)
 {
@@ -173,9 +98,9 @@ int	main(int ac, char **av)
 	if (mlx.mlx_win == NULL)
 		exit(1);
 	make_path(&mlx, mlx.ptr);
+	check_int(mlx);
 	mlx_hook(mlx.mlx_win, 17, 0, ft_exit, &mlx);
 	mlx.steps = 0;
 	mlx_key_hook(mlx.mlx_win, ft_moves, &mlx);
-	mlx_loop_hook(mlx.mlx, frame, &mlx);
 	mlx_loop(mlx.mlx);
 }

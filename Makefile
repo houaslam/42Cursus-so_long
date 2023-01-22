@@ -6,7 +6,7 @@
 #    By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/16 12:10:20 by houaslam          #+#    #+#              #
-#    Updated: 2023/01/20 21:35:24 by houaslam         ###   ########.fr        #
+#    Updated: 2023/01/22 15:12:32 by houaslam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,14 +18,15 @@ SRCS =  so_long.c \
 		libft.c \
 		outils.c \
 		moves.c \
-		protection.c
+		protection.c \
+		map_inva.c
 
 all : ${NAME}
 
 OBJ = ${SRCS:.c=.o}
 
 ${NAME} : ${OBJ}
-	cc  ${CFLAGS} -lmlx -framework OpenGL -framework AppKit -fsanitize=address -g ${OBJ} -o ${NAME}
+	cc  ${CFLAGS} -lmlx -framework OpenGL -framework AppKit -fsanitize=address -g ${OBJ} printf/libftprintf.a -o ${NAME}
 
 clean :
 	rm -f ${OBJ}
