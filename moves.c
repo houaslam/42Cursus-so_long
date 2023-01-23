@@ -6,11 +6,11 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 05:00:53 by houaslam          #+#    #+#             */
-/*   Updated: 2023/01/22 18:12:37 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/01/23 02:30:26 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long.h" 
 
 void	left_move(t_mlx *mlx)
 {
@@ -35,8 +35,8 @@ void	left_move(t_mlx *mlx)
 		put1_image(mlx, mlx->floor);
 		mlx->p_x--;
 		put1_image(mlx, mlx->ghost_l);
-		ft_printf("GAME OVER!!");
-		exit(0);
+		printf("GAME OVER!!");
+		ft_exit(mlx);
 	}
 }
 
@@ -64,7 +64,7 @@ void	down_move(t_mlx *mlx)
 		mlx->p_y++;
 		put1_image(mlx, mlx->ghost_f);
 		ft_printf("GAME OVER!!");
-		exit(0);
+		ft_exit(mlx);
 	}
 }
 
@@ -91,8 +91,9 @@ void	right_move(t_mlx *mlx)
 		put1_image(mlx, mlx->floor);
 		mlx->p_x++;
 		put1_image(mlx, mlx->ghost_r);
-		ft_printf("GAME OVER!!");
-		exit(0);
+		printf("heey\n");
+		printf("GAME OVER!!");
+		ft_exit(mlx);
 	}
 }
 
@@ -120,7 +121,7 @@ void	up_move(t_mlx *mlx)
 		mlx->p_y--;
 		put1_image(mlx, mlx->ghost_b);
 		ft_printf("GAME OVER!!");
-		exit(0);
+		ft_exit(mlx);
 	}
 }
 

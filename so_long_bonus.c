@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   so_long_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:22:45 by houaslam          #+#    #+#             */
-/*   Updated: 2023/01/23 02:18:23 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/01/23 02:52:40 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,7 @@ int	main(int ac, char **av)
 	check_int(mlx);
 	mlx_hook(mlx.mlx_win, 17, 0, ft_exit, &mlx);
 	mlx.steps = 0;
+	mlx_loop_hook(mlx.mlx, frame, &mlx);
 	mlx_key_hook(mlx.mlx_win, ft_moves, &mlx);
 	mlx_loop(mlx.mlx);
 }

@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/16 12:07:21 by houaslam          #+#    #+#             */
-/*   Updated: 2023/01/23 02:42:59 by houaslam         ###   ########.fr       */
+/*   Created: 2023/01/23 02:44:16 by houaslam          #+#    #+#             */
+/*   Updated: 2023/01/23 08:09:04 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE	1
@@ -61,6 +61,11 @@ typedef struct mlx {
 	int		fd;
 	int		steps;
 	char	**res;
+	void	*enemy;
+	int		n_x;
+	int		n_y;
+	int		fram_n;
+	int		f;
 }			t_mlx;
 
 typedef struct data{
@@ -85,13 +90,19 @@ void	path_find(char av, t_mlx mlx);
 void	init(t_mlx *mlx);
 int		ft_exit(t_mlx *mlx);
 void	make_coins(t_mlx *mlx);
-void	put1_image(t_mlx *mlx, void *texture);
+void	put1_image(t_mlx *mlx, void *texture, int x, int y);
 void	arg_prot(t_mlx *mlx, char **av);
 void	steps(t_mlx *mlx, int keycode);
 void	flood_fill(int x, int y, t_mlx mlx, t_data *data);
 void	check_int(t_mlx mlx);
 void	map_dup(t_mlx *mlx);
 void	ft_free(t_mlx *mlx);
+void	enemy(t_mlx *mlx);
+int		enemy_ani(t_mlx *mlx);
+void	directions(t_mlx *mlx);
+char	*ft_sign(long int nb, int j, char *str);
+int		ft_count(long int nb);
+char	*ft_itoa(int n);
 
 //moves
 
@@ -114,8 +125,9 @@ char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strdup(char *s);
 char	*ft_substr(char *s, unsigned int start, size_t len);
 char	*ft_strchr(char *s, int c);
-void	ft_putstr_fd(char *s, t_mlx *mlx);
+void	ft_putstr_fd(char *s);
 void	ft_freestr(char **arr, int p);
 int		ft_strnstr(char *big, char *small);
+int	anime(t_mlx *mlx);
 
 #endif

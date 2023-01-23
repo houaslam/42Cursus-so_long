@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   so_long_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:22:45 by houaslam          #+#    #+#             */
-/*   Updated: 2023/01/23 02:18:23 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/01/23 08:28:23 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h" 
+#include "so_long_bonus.h" 
 
 int	ft_moves(int keycode, t_mlx *mlx)
 {
@@ -25,11 +25,8 @@ int	ft_moves(int keycode, t_mlx *mlx)
 	else if (keycode == 53)
 	{
 		ft_printf("GAME OVER !!");
-		ft_free(mlx);
 		ft_exit(mlx);
 	}
-	mlx->steps++;
-	ft_printf("NUM = %d\n", mlx->steps);
 	return (0);
 }
 
@@ -58,7 +55,7 @@ void	read_data(t_mlx *mlx)
 	mlx->ptr = malloc(sizeof(char **));
 	mlx->ptr[mlx->win_y] = get_next_line(mlx->fd);
 	if (!mlx->ptr[mlx->win_y])
-		ft_putstr_fd("invalid map", mlx);
+		ft_putstr_fd("invalid map");
 	while (mlx->ptr[mlx->win_y])
 	{
 		mlx->win_x = 0;
@@ -80,6 +77,7 @@ int	main(int ac, char **av)
 {
 	t_mlx	mlx;
 
+	mlx.f = 0;
 	(void)ac;
 	mlx.img_x = 0;
 	mlx.img_y = 0;
@@ -94,9 +92,18 @@ int	main(int ac, char **av)
 	if (mlx.mlx_win == NULL || mlx.mlx == NULL)
 		exit(1);
 	make_path(&mlx, mlx.ptr);
+	enemy(&mlx);
 	check_int(mlx);
 	mlx_hook(mlx.mlx_win, 17, 0, ft_exit, &mlx);
 	mlx.steps = 0;
+	mlx_loop_hook(mlx.mlx, anime, &mlx);
 	mlx_key_hook(mlx.mlx_win, ft_moves, &mlx);
 	mlx_loop(mlx.mlx);
+}
+
+int	anime(t_mlx *mlx)
+{
+	frame(mlx);
+	enemy_ani(mlx);
+	return (1);
 }

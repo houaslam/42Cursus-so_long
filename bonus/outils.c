@@ -6,11 +6,11 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 13:51:43 by houaslam          #+#    #+#             */
-/*   Updated: 2023/01/23 02:30:54 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/01/23 07:35:10 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h" 
+#include "so_long_bonus.h" 
 
 void	path_find(char av, t_mlx mlx)
 {
@@ -29,8 +29,11 @@ void	path_find(char av, t_mlx mlx)
 	else if (av == 'C')
 		mlx_put_image_to_window(mlx.mlx, \
 		mlx.mlx_win, mlx.collect_f, (mlx.img_x) * mlx.j, mlx.img_y * mlx.i);
+	else if (av == 'N')
+		mlx_put_image_to_window(mlx.mlx, \
+		mlx.mlx_win, mlx.enemy, (mlx.img_x) * mlx.j, mlx.img_y * mlx.i);
 	else
-		ft_putstr_fd("Error", &mlx);
+		ft_putstr_fd("Error");
 }
 
 void	init(t_mlx *mlx)
@@ -51,9 +54,11 @@ void	init(t_mlx *mlx)
 	, "textures/ghost_b.xpm", &mlx->img_x, &mlx->img_y);
 	mlx->ghost_r = mlx_xpm_file_to_image(mlx->mlx \
 	, "textures/ghost_r.xpm", &mlx->img_x, &mlx->img_y);
+	mlx->enemy = mlx_xpm_file_to_image(mlx->mlx \
+	, "textures/enemy.xpm", &mlx->img_x, &mlx->img_y);
 }
 
-void	ft_putstr_fd(char *s, t_mlx *mlx)
+void	ft_putstr_fd(char *s)
 {
 	int	i;
 
@@ -65,7 +70,6 @@ void	ft_putstr_fd(char *s, t_mlx *mlx)
 		write(2, &s[i], 1);
 		i++;
 	}
-	ft_free(mlx);
 	exit(1);
 }
 

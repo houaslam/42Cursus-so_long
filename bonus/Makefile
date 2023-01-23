@@ -6,7 +6,7 @@
 #    By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/16 12:10:20 by houaslam          #+#    #+#              #
-#    Updated: 2023/01/23 02:53:13 by houaslam         ###   ########.fr        #
+#    Updated: 2023/01/23 08:14:08 by houaslam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,22 +14,15 @@ NAME = so_long
 BONUS = so_long_bonus
 CFLAGS = -Wall -Wextra -Werror -Imlx 
 
-SRCS =  so_long.c \
+SRCS =  so_long_bonus.c \
 		get_next_line.c \
 		libft.c \
 		outils.c \
 		moves.c \
 		protection.c \
-		map_inva.c
-
-B_SRCS  =  	so_long_bonus.c \
-			get_next_line.c \
-			libft.c \
-			outils.c \
-			moves.c \
-			protection.c \
-			map_inva.c \
-			animation.c
+		map_inva.c \
+		animation.c \
+		ft_itoa.c
 
 all : ${NAME}
 

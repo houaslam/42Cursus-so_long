@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/16 12:07:21 by houaslam          #+#    #+#             */
-/*   Updated: 2023/01/23 02:42:59 by houaslam         ###   ########.fr       */
+/*   Created: 2023/01/23 02:44:16 by houaslam          #+#    #+#             */
+/*   Updated: 2023/01/23 03:21:53 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE	1
@@ -61,6 +61,7 @@ typedef struct mlx {
 	int		fd;
 	int		steps;
 	char	**res;
+	void	*enemy;
 }			t_mlx;
 
 typedef struct data{
