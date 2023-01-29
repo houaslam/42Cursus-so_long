@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 02:44:16 by houaslam          #+#    #+#             */
-/*   Updated: 2023/01/23 08:09:04 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/01/29 15:38:49 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <unistd.h>
-# include "printf/ft_printf.h"
+# include "../printf/ft_printf.h"
 
 # define UP 13
 # define ARROW_UP 126
@@ -35,37 +35,39 @@
 
 typedef struct mlx {
 	void	*mlx;
-	void	*mlx_win;
-	int		win_x;
-	int		win_y;
-	char	*path;
 	void	*img;
-	int		img_x;
-	int		img_y;
-	int		i;
-	int		j;
-	int		p_x;
-	int		p_y;
-	void	*ghost_f;
 	void	*exit;
 	void	*wall;
+	void	*enemy;
 	void	*floor;
-	void	*collect_f;
+	void	*mlx_win;
+	void	*ghost_f;
 	void	*ghost_l;
 	void	*ghost_b;
 	void	*ghost_r;
+	void	*collect_f;
 	void	*exit2;
-	char	**ptr;
-	int		collect_num;
-	int		fram;
-	int		fd;
-	int		steps;
+	char	*fin;
 	char	**res;
-	void	*enemy;
-	int		n_x;
-	int		n_y;
-	int		fram_n;
+	char	**ptr;
+	int		x;
+	int		y;
 	int		f;
+	int		fd;
+	int		p_x;
+	int		n_x;
+	int		p_y;
+	int		n_y;
+	int		e_x;
+	int		e_y;
+	int		fram;
+	int		win_x;
+	int		win_y;
+	int		img_x;
+	int		img_y;
+	int		steps;
+	int		fram_n;
+	int		collect_num;
 }			t_mlx;
 
 typedef struct data{
@@ -73,36 +75,37 @@ typedef struct data{
 	int				i;
 	int				j;
 	int				k;
-	unsigned int	len;
 	int				exit_n;
 	int				collect_n;
+	unsigned int	len;
 }	t_data;
 
 //so_long 
-void	make_path(t_mlx *mlx, char **ptr);
-void	read_data(t_mlx *mlx);
-int		ft_moves(int keycode, t_mlx *mlx);
-int		frame(t_mlx *mlx);
-void	map_prot(t_mlx mlx);
-void	path_prot(char **av, t_mlx *mlx);
-void	map_prot2(t_mlx mlx, t_data data);
-void	path_find(char av, t_mlx mlx);
-void	init(t_mlx *mlx);
-int		ft_exit(t_mlx *mlx);
-void	make_coins(t_mlx *mlx);
+void	put_element(char av, t_mlx *mlx);
+void	put_steps(t_mlx *mlx);
 void	put1_image(t_mlx *mlx, void *texture, int x, int y);
-void	arg_prot(t_mlx *mlx, char **av);
-void	steps(t_mlx *mlx, int keycode);
-void	flood_fill(int x, int y, t_mlx mlx, t_data *data);
-void	check_int(t_mlx mlx);
+void	make_path(t_mlx *mlx, char **ptr);
+void	make_coins(t_mlx *mlx);
+void	read_data(t_mlx *mlx);
+void	read_data1(t_mlx *mlx);
+void	map_prot(t_mlx mlx);
+void	map_prot2(t_mlx mlx, t_data data);
 void	map_dup(t_mlx *mlx);
-void	ft_free(t_mlx *mlx);
-void	enemy(t_mlx *mlx);
+void	ft_free(char **ptr, int i);
+int		ft_moves(int keycode, t_mlx *mlx);
+int		ft_exit(t_mlx *mlx);
+int		frame(t_mlx *mlx);
+void	frame_2(t_mlx *mlx);
+void	frame_3(t_mlx *mlx);
 int		enemy_ani(t_mlx *mlx);
+int		enemy(t_mlx *mlx);
+void	arg_prot(t_mlx *mlx, char **av);
+void	init(t_mlx *mlx);
+void	flood_fill(int x, int y, t_mlx mlx, t_data *data);
+void	check(t_mlx mlx);
+void	element_prot(char **av, t_mlx *mlx);
 void	directions(t_mlx *mlx);
-char	*ft_sign(long int nb, int j, char *str);
-int		ft_count(long int nb);
-char	*ft_itoa(int n);
+void	one_direction(t_mlx *mlx);
 
 //moves
 
@@ -121,13 +124,21 @@ char	*get_next_line(int fd);
 //libft
 
 size_t	ft_strlen(char *str);
+char	*ft_join(char *s1, char *s2);
 char	*ft_strjoin(char *s1, char *s2);
 char	*ft_strdup(char *s);
+char	*ft_sign(long int nb, int j, char *str);
+int		ft_count(long int nb);
+char	*ft_itoa(int n);
 char	*ft_substr(char *s, unsigned int start, size_t len);
 char	*ft_strchr(char *s, int c);
 void	ft_putstr_fd(char *s);
-void	ft_freestr(char **arr, int p);
 int		ft_strnstr(char *big, char *small);
-int	anime(t_mlx *mlx);
+
+// split 
+int		ft_dim1(char *s, char c);
+char	**ft_freestr(char **arr, int p);
+char	**ft_split(char const *s, char c);
+char	**ft_func(char **arr, char *s, char c);
 
 #endif

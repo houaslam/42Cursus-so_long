@@ -1,44 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   outils.c                                           :+:      :+:    :+:   */
+/*   outils_m.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 13:51:43 by houaslam          #+#    #+#             */
-/*   Updated: 2023/01/23 02:30:54 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/01/29 17:12:54 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h" 
-
-void	path_find(char av, t_mlx mlx)
-{
-	if (av == 'P')
-		mlx_put_image_to_window(mlx.mlx, \
-		mlx.mlx_win, mlx.ghost_f, (mlx.img_x) * mlx.p_x, mlx.img_y * mlx.p_y);
-	else if (av == '0')
-		mlx_put_image_to_window(mlx.mlx, \
-		mlx.mlx_win, mlx.floor, (mlx.img_x) * mlx.j, mlx.img_y * mlx.i);
-	else if (av == 'E')
-		mlx_put_image_to_window(mlx.mlx, \
-		mlx.mlx_win, mlx.exit, (mlx.img_x) * mlx.j, mlx.img_y * mlx.i);
-	else if (av == '1')
-		mlx_put_image_to_window(mlx.mlx, \
-		mlx.mlx_win, mlx.wall, (mlx.img_x) * mlx.j, mlx.img_y * mlx.i);
-	else if (av == 'C')
-		mlx_put_image_to_window(mlx.mlx, \
-		mlx.mlx_win, mlx.collect_f, (mlx.img_x) * mlx.j, mlx.img_y * mlx.i);
-	else
-		ft_putstr_fd("Error", &mlx);
-}
 
 void	init(t_mlx *mlx)
 {
 	mlx->ghost_f = mlx_xpm_file_to_image(mlx->mlx \
 	, "textures/ghost_f.xpm", &mlx->p_x, &mlx->p_y);
 	mlx->exit = mlx_xpm_file_to_image(mlx->mlx \
-	, "textures/exit.xpm", &mlx->img_x, &mlx->img_y);
+	, "textures/before.xpm", &mlx->img_x, &mlx->img_y);
 	mlx->wall = mlx_xpm_file_to_image(mlx->mlx \
 	, "textures/wall.xpm", &mlx->img_x, &mlx->img_y);
 	mlx->floor = mlx_xpm_file_to_image(mlx->mlx \
@@ -51,49 +30,64 @@ void	init(t_mlx *mlx)
 	, "textures/ghost_b.xpm", &mlx->img_x, &mlx->img_y);
 	mlx->ghost_r = mlx_xpm_file_to_image(mlx->mlx \
 	, "textures/ghost_r.xpm", &mlx->img_x, &mlx->img_y);
+	mlx->exit2 = mlx_xpm_file_to_image(mlx->mlx \
+	, "textures/after.xpm", &mlx->img_x, &mlx->img_y);
 }
 
-void	ft_putstr_fd(char *s, t_mlx *mlx)
+void	read_data1(t_mlx *mlx)
 {
-	int	i;
+	char	*help;
 
-	i = 0;
-	if (!s)
-		return ;
-	while (s[i])
+	mlx->win_y = 1;
+	mlx->fin = NULL;
+	help = get_next_line(mlx->fd);
+	while (1)
 	{
-		write(2, &s[i], 1);
-		i++;
+		mlx->fin = ft_strjoin(mlx->fin, help);
+		free(help);
+		help = get_next_line(mlx->fd);
+		if (help == NULL)
+			break ;
+		mlx->win_y++;
 	}
-	ft_free(mlx);
-	exit(1);
+	mlx->ptr = ft_split(mlx->fin, '\n');
+	free(mlx->fin);
+}
+
+void	put_element(char av, t_mlx *mlx)
+{
+	if (av == 'P')
+		mlx_put_image_to_window(mlx->mlx, \
+	mlx->mlx_win, mlx->ghost_f, mlx->img_x * mlx->p_x, mlx->img_y * mlx->p_y);
+	else if (av == '0')
+		mlx_put_image_to_window(mlx->mlx, \
+		mlx->mlx_win, mlx->floor, (mlx->img_x) * mlx->y, mlx->img_y * mlx->x);
+	else if (av == 'E')
+	{
+		mlx_put_image_to_window(mlx->mlx, \
+		mlx->mlx_win, mlx->exit, (mlx->img_x) * mlx->y, mlx->img_y * mlx->x);
+		mlx->e_x = mlx->x;
+		mlx->e_y = mlx->y;
+	}
+	else if (av == '1')
+		mlx_put_image_to_window(mlx->mlx, \
+		mlx->mlx_win, mlx->wall, (mlx->img_x) * mlx->y, mlx->img_y * mlx->x);
+	else if (av == 'C')
+		mlx_put_image_to_window(mlx->mlx, \
+	mlx->mlx_win, mlx->collect_f, mlx->img_x * mlx->y, mlx->img_y * mlx->x);
+	else
+		ft_putstr_fd("Another element");
 }
 
 int	ft_exit(t_mlx *mlx)
 {
+	ft_printf("GAME OVER !!");
 	mlx_destroy_window(mlx->mlx, mlx->mlx_win);
 	exit(0);
 }
 
-void	make_coins(t_mlx *mlx)
+void	put1_image(t_mlx *mlx, void *texture, int y, int x)
 {
-	mlx->i = 0;
-	while (mlx->ptr[mlx->i])
-	{
-		mlx->j = 0;
-		while (mlx->ptr[mlx->i][mlx->j])
-		{
-			if (mlx->ptr[mlx->i][mlx->j] == 'C')
-			{
-				mlx_put_image_to_window(mlx->mlx, \
-				mlx->mlx_win, mlx->floor, \
-				(mlx->img_x) * mlx->j, mlx->img_y * mlx->i);
-				mlx_put_image_to_window(mlx->mlx, \
-				mlx->mlx_win, mlx->collect_f, \
-				(mlx->img_x) * mlx->j, mlx->img_y * mlx->i);
-			}
-			mlx->j++;
-		}
-		mlx->i++;
-	}
+	mlx_put_image_to_window(mlx->mlx, mlx->mlx_win, \
+	texture, (mlx->img_x) * x, mlx->img_y * y);
 }

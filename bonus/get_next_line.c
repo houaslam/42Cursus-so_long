@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 14:43:45 by houaslam          #+#    #+#             */
-/*   Updated: 2023/01/23 04:27:49 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/01/29 17:19:05 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,11 @@ char	*after(char *buf)
 		str[i] = buf[i];
 		i++;
 	}
+	if (buf[i] == '\n')
+	{
+		str[i] = buf[i];
+		i++;
+	}
 	str[i] = '\0';
 	return (str);
 }
@@ -82,7 +87,7 @@ char	*ft_check(char *buf, int fd)
 		res[i] = '\0';
 		buf = ft_strjoin(buf, res);
 	}
-	free (res);
+	free(res);
 	return (buf);
 }
 
@@ -101,28 +106,28 @@ char	*get_next_line(int fd)
 	return (line);
 }
 
-int	ft_strnstr(char *big, char *small)
+char	*ft_strjoin(char *s1, char *s2)
 {
-	size_t	j;
 	size_t	i;
-	size_t	len;
-	int		len1;
+	size_t	c;
+	char	*str;
 
-	j = 0;
-	i = 0;
-	len = ft_strlen(big) - 1;
-	len1 = ft_strlen(small) - 1;
-	while (big[len - j] && j <= ft_strlen(small))
-	{
-		while (big[len - j] == small[len1 - i] \
-		&& small[len1 - i] && big[len - j])
-		{
-			i++;
-			j++;
-			if (len1 - i == 0)
-				return (1);
-		}
-		j++;
-	}
-	return (0);
+	if (!s1 && s2)
+		return (ft_strdup(s2));
+	if (s1 && !s2)
+		return (ft_strdup(s1));
+	if (!s1 && !s2)
+		return (NULL);
+	str = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	if (!str)
+		return (NULL);
+	i = -1;
+	c = 0;
+	while (s1[++i] != '\0')
+			str[i] = s1[i];
+	while (s2[c] != '\0')
+		str[i++] = s2[c++];
+	str[i] = '\0';
+	free(s1);
+	return (str);
 }

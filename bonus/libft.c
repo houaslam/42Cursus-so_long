@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 13:22:32 by houaslam          #+#    #+#             */
-/*   Updated: 2023/01/23 04:27:47 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/01/29 17:17:34 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ size_t	ft_strlen(char *str)
 	return (i);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_join(char *s1, char *s2)
 {
 	size_t	i;
 	size_t	c;

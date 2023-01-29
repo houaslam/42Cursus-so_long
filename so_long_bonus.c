@@ -6,11 +6,11 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:22:45 by houaslam          #+#    #+#             */
-/*   Updated: 2023/01/23 02:52:40 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/01/29 17:31:40 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h" 
+#include "bonus/so_long_bonus.h" 
 
 int	ft_moves(int keycode, t_mlx *mlx)
 {
@@ -23,81 +23,78 @@ int	ft_moves(int keycode, t_mlx *mlx)
 	else if (keycode == RIGHT || keycode == ARROW_RIGHT)
 		right_move(mlx);
 	else if (keycode == 53)
-	{
-		ft_printf("GAME OVER !!");
-		ft_free(mlx);
 		ft_exit(mlx);
-	}
-	mlx->steps++;
-	ft_printf("NUM = %d\n", mlx->steps);
 	return (0);
 }
 
 void	make_path(t_mlx *mlx, char **ptr)
 {
-	mlx->i = 0;
-	while (ptr[mlx->i])
+	mlx->x = 0;
+	while (ptr[mlx->x])
 	{
-		mlx->j = 0;
-		while (ptr[mlx->i][mlx->j])
+		mlx->y = 0;
+		while (ptr[mlx->x][mlx->y])
 		{
 			mlx_put_image_to_window(mlx->mlx, mlx->mlx_win, \
-			mlx->floor, (mlx->img_x) * mlx->j, mlx->img_y * mlx->i);
-			path_find(ptr[mlx->i][mlx->j], *mlx);
-			mlx->j++;
+			mlx->floor, (mlx->img_x) * mlx->y, mlx->img_y * mlx->x);
+			put_element(ptr[mlx->x][mlx->y], mlx);
+			mlx->y++;
 		}
-		mlx->i++;
+		mlx->x++;
 	}
-	path_prot(ptr, mlx);
+	element_prot(ptr, mlx);
+	check(*mlx);
 }
 
 void	read_data(t_mlx *mlx)
 {
-	mlx->win_y = 0;
+	int	j;
+
+	j = 0;
 	mlx->win_x = 0;
-	mlx->ptr = malloc(sizeof(char **));
-	mlx->ptr[mlx->win_y] = get_next_line(mlx->fd);
-	if (!mlx->ptr[mlx->win_y])
-		ft_putstr_fd("invalid map", mlx);
-	while (mlx->ptr[mlx->win_y])
+	read_data1(mlx);
+	while (mlx->ptr[j])
 	{
 		mlx->win_x = 0;
-		while (mlx->ptr[mlx->win_y][mlx->win_x])
+		while (mlx->ptr[j][mlx->win_x])
 		{
-			if (mlx->ptr[mlx->win_y][mlx->win_x] == 'P')
+			if (mlx->ptr[j][mlx->win_x] == 'P')
 			{
 				mlx->p_x = mlx->win_x;
-				mlx->p_y = mlx->win_y;
+				mlx->p_y = j;
 			}
 			mlx->win_x++;
 		}
-		mlx->win_y++;
-		mlx->ptr[mlx->win_y] = get_next_line(mlx->fd);
+		j++;
 	}
+	mlx->ptr[j] = NULL;
 }
 
 int	main(int ac, char **av)
 {
 	t_mlx	mlx;
 
-	(void)ac;
+	if (ac != 2)
+		ft_putstr_fd("INVALID ARGUMENTS !!");
 	mlx.img_x = 0;
+	mlx.steps = 0;
 	mlx.img_y = 0;
+	mlx.fram_n = 0;
+	mlx.f = 1;
 	mlx.mlx = mlx_init();
 	arg_prot(&mlx, av);
 	init(&mlx);
 	read_data(&mlx);
-	map_dup(&mlx);
 	map_prot(mlx);
 	mlx.mlx_win = mlx_new_window(mlx.mlx, \
 	mlx.win_x * 40, mlx.win_y * 40, "so_long");
 	if (mlx.mlx_win == NULL || mlx.mlx == NULL)
 		exit(1);
 	make_path(&mlx, mlx.ptr);
-	check_int(mlx);
+	mlx_put_image_to_window(mlx.mlx, mlx.mlx_win, \
+	mlx.wall, 0, 0);
 	mlx_hook(mlx.mlx_win, 17, 0, ft_exit, &mlx);
-	mlx.steps = 0;
-	mlx_loop_hook(mlx.mlx, frame, &mlx);
-	mlx_key_hook(mlx.mlx_win, ft_moves, &mlx);
+	mlx_hook(mlx.mlx_win, 2, 0, ft_moves, &mlx);
+	mlx_loop_hook(mlx.mlx, enemy_ani, &mlx);
 	mlx_loop(mlx.mlx);
 }

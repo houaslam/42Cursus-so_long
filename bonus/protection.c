@@ -6,37 +6,28 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 21:08:54 by houaslam          #+#    #+#             */
-/*   Updated: 2023/01/23 07:34:41 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/01/29 17:14:53 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h" 
 
-void	map_prot(t_mlx mlx)
-{	
-	t_data	data;
+void	arg_prot(t_mlx *mlx, char **av)
+{
+	char	*path;
 
-	data.i = 0;
-	data.j = 0;
-	data.len = ft_strlen(mlx.ptr[0]) - 1;
-	while (mlx.ptr[data.i])
-	{
-		data.j = 0;
-		while (mlx.ptr[data.i][data.j])
-		{
-			if (ft_strlen(mlx.ptr[data.i]) - 1 != data.len)
-				ft_putstr_fd("maps is invalid");
-			if (mlx.ptr[0][data.j] != '1' || \
-			mlx.ptr[data.i][0] != '1' || mlx.ptr[data.i][data.len] != '1')
-				ft_putstr_fd("maps is invalid");
-			data.j++;
-		}
-		data.i++;
-	}
-	map_prot2(mlx, data);
+	if (!ft_strlen(av[1]))
+		ft_putstr_fd("ADD A MAP!!");
+	if (ft_strnstr(av[1], ".ber") == 0)
+		ft_putstr_fd("MAP SHOULD END WITH WITH '.ber'");
+	path = ft_join("maps/", av[1]);
+	mlx->fd = open(path, O_RDONLY);
+	free(path);
+	if (mlx->fd < 0)
+		ft_putstr_fd("MAP COULDN T BE OPENED");
 }
 
-void	path_prot(char **av, t_mlx *mlx)
+void	element_prot(char **av, t_mlx *mlx)
 {
 	t_data	son;
 
@@ -65,9 +56,33 @@ void	path_prot(char **av, t_mlx *mlx)
 		ft_putstr_fd("less than 1 collectable/ exit/player");
 }
 
+void	map_prot(t_mlx mlx)
+{
+	t_data	data;
+
+	data.i = 0;
+	data.j = 0;
+	data.len = ft_strlen(mlx.ptr[0]) - 1;
+	while (mlx.ptr[data.i])
+	{
+		data.j = 0;
+		while (mlx.ptr[data.i][data.j])
+		{
+			if (ft_strlen(mlx.ptr[data.i]) - 1 != data.len)
+				ft_putstr_fd("maps is invalid");
+			if (mlx.ptr[0][data.j] != '1' || \
+			mlx.ptr[data.i][0] != '1' || mlx.ptr[data.i][data.len] != '1')
+				ft_putstr_fd("maps is invalid");
+			data.j++;
+		}
+		data.i++;
+	}
+	map_prot2(mlx, data);
+}
+
 void	map_prot2(t_mlx mlx, t_data data)
 {
-		data.j = 0;
+	data.j = 0;
 	data.i--;
 	while (mlx.ptr[data.i][data.j])
 	{
@@ -77,22 +92,4 @@ void	map_prot2(t_mlx mlx, t_data data)
 	}
 	if (data.i == data.j - 1)
 		ft_putstr_fd("map should be rectangulare");
-}
-
-void	arg_prot(t_mlx *mlx, char **av)
-{
-	int	len;
-
-	len = ft_strlen(av[1]);
-	if (ft_strnstr(av[1], ".ber") == 0)
-	{
-		write(2, "MAP COULDN T BE OPENED", 22);
-		exit(1);
-	}
-	mlx->fd = open(ft_strjoin("maps/", av[1]), O_RDONLY);
-	if (mlx->fd < 0)
-	{
-		write(2, "MAP COULDN T BE OPENED", 22);
-		exit(1);
-	}
 }
