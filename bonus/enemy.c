@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 02:43:29 by houaslam          #+#    #+#             */
-/*   Updated: 2023/01/29 17:14:28 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/01/30 18:39:29 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	directions(t_mlx *mlx)
 		mlx->n_x++;
 		mlx->y++;
 		mlx->ptr[mlx->n_y][mlx->n_x] = 'N';
-		put1_image(mlx, mlx->enemy, mlx->n_y, mlx->n_x);
+		put1_image(mlx, mlx->enemy_od, mlx->n_y, mlx->n_x);
 	}
 	else if (mlx->f == 1)
 		mlx->f = -1;

@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 02:44:16 by houaslam          #+#    #+#             */
-/*   Updated: 2023/01/29 15:38:49 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/01/30 18:36:35 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct mlx {
 	void	*exit;
 	void	*wall;
 	void	*enemy;
+	void	*enemy_od;
 	void	*floor;
 	void	*mlx_win;
 	void	*ghost_f;

@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 13:51:43 by houaslam          #+#    #+#             */
-/*   Updated: 2023/01/30 13:57:14 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/01/30 18:04:37 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	init(t_mlx *mlx)
 	, "textures/ghost_r.xpm", &mlx->img_x, &mlx->img_y);
 	mlx->enemy = mlx_xpm_file_to_image(mlx->mlx \
 	, "textures/enemy.xpm", &mlx->img_x, &mlx->img_y);
+	mlx->enemy_od = mlx_xpm_file_to_image(mlx->mlx \
+	, "textures/enemy_od.xpm", &mlx->img_x, &mlx->img_y);
 	mlx->exit2 = mlx_xpm_file_to_image(mlx->mlx \
 	, "textures/after.xpm", &mlx->img_x, &mlx->img_y);
 }
