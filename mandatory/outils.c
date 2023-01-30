@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   outils_m.c                                         :+:      :+:    :+:   */
+/*   outils.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 13:51:43 by houaslam          #+#    #+#             */
-/*   Updated: 2023/01/29 17:12:54 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/01/30 13:59:29 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	put_element(char av, t_mlx *mlx)
 		mlx_put_image_to_window(mlx->mlx, \
 	mlx->mlx_win, mlx->collect_f, mlx->img_x * mlx->y, mlx->img_y * mlx->x);
 	else
-		ft_putstr_fd("Another element");
+		ft_putstr_fd("ANOTHER ELEMENT");
 }
 
 int	ft_exit(t_mlx *mlx)

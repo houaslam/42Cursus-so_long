@@ -6,7 +6,7 @@
 #    By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/16 12:10:20 by houaslam          #+#    #+#              #
-#    Updated: 2023/01/29 17:16:14 by houaslam         ###   ########.fr        #
+#    Updated: 2023/01/30 14:05:07 by houaslam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,5 +55,3 @@ fclean : clean
 	rm -f $(BONUS)
 
 re: fclean all
-
-mine: bonus clean

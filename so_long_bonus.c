@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:22:45 by houaslam          #+#    #+#             */
-/*   Updated: 2023/01/29 17:31:40 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/01/30 13:51:46 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ void	make_path(t_mlx *mlx, char **ptr)
 		}
 		mlx->x++;
 	}
-	element_prot(ptr, mlx);
-	check(*mlx);
 }
 
 void	read_data(t_mlx *mlx)
@@ -68,6 +66,9 @@ void	read_data(t_mlx *mlx)
 		j++;
 	}
 	mlx->ptr[j] = NULL;
+	element_prot(mlx->ptr, mlx);
+	map_prot(*mlx);
+	check(*mlx);
 }
 
 int	main(int ac, char **av)
@@ -85,7 +86,6 @@ int	main(int ac, char **av)
 	arg_prot(&mlx, av);
 	init(&mlx);
 	read_data(&mlx);
-	map_prot(mlx);
 	mlx.mlx_win = mlx_new_window(mlx.mlx, \
 	mlx.win_x * 40, mlx.win_y * 40, "so_long");
 	if (mlx.mlx_win == NULL || mlx.mlx == NULL)

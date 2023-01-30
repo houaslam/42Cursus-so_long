@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 02:44:16 by houaslam          #+#    #+#             */
-/*   Updated: 2023/01/29 17:00:42 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/01/30 14:08:45 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ typedef struct mlx {
 	void	*img;
 	void	*exit;
 	void	*wall;
-	void	*enemy;
 	void	*floor;
 	void	*mlx_win;
 	void	*ghost_f;
@@ -55,9 +54,7 @@ typedef struct mlx {
 	int		f;
 	int		fd;
 	int		p_x;
-	int		n_x;
 	int		p_y;
-	int		n_y;
 	int		e_x;
 	int		e_y;
 	int		fram;
@@ -66,7 +63,6 @@ typedef struct mlx {
 	int		img_x;
 	int		img_y;
 	int		steps;
-	int		fram_n;
 	int		collect_num;
 }			t_mlx;
 
@@ -85,7 +81,6 @@ void	put_element(char av, t_mlx *mlx);
 void	put_steps(t_mlx *mlx);
 void	put1_image(t_mlx *mlx, void *texture, int x, int y);
 void	make_path(t_mlx *mlx, char **ptr);
-void	make_coins(t_mlx *mlx);
 void	read_data(t_mlx *mlx);
 void	read_data1(t_mlx *mlx);
 void	map_prot(t_mlx mlx);
@@ -94,46 +89,36 @@ void	map_dup(t_mlx *mlx);
 void	ft_free(char **ptr, int i);
 int		ft_moves(int keycode, t_mlx *mlx);
 int		ft_exit(t_mlx *mlx);
-int		frame(t_mlx *mlx);
-void	frame_2(t_mlx *mlx);
-void	frame_3(t_mlx *mlx);
-int		enemy_ani(t_mlx *mlx);
-int		enemy(t_mlx *mlx);
 void	arg_prot(t_mlx *mlx, char **av);
 void	init(t_mlx *mlx);
 void	flood_fill(int x, int y, t_mlx mlx, t_data *data);
 void	check(t_mlx mlx);
 void	element_prot(char **av, t_mlx *mlx);
-void	directions(t_mlx *mlx);
-void	one_direction(t_mlx *mlx);
 
 //moves
 
+void	up_move(t_mlx *mlx);
 void	left_move(t_mlx *mlx);
 void	down_move(t_mlx *mlx);
 void	right_move(t_mlx *mlx);
-void	up_move(t_mlx *mlx);
 
 // get_next_line
 
-char	*ft_handle(char *buf);
 char	*after(char *buf);
-char	*ft_check(char *buf, int fd);
+char	*ft_handle(char *buf);
 char	*get_next_line(int fd);
+char	*ft_check(char *buf, int fd);
 
 //libft
 
+char	*ft_strdup(char *s);
 size_t	ft_strlen(char *str);
+void	ft_putstr_fd(char *s);
+char	*ft_strchr(char *s, int c);
 char	*ft_join(char *s1, char *s2);
 char	*ft_strjoin(char *s1, char *s2);
-char	*ft_strdup(char *s);
-char	*ft_sign(long int nb, int j, char *str);
-int		ft_count(long int nb);
-char	*ft_itoa(int n);
-char	*ft_substr(char *s, unsigned int start, size_t len);
-char	*ft_strchr(char *s, int c);
-void	ft_putstr_fd(char *s);
 int		ft_strnstr(char *big, char *small);
+char	*ft_substr(char *s, unsigned int start, size_t len);
 
 // split 
 int		ft_dim1(char *s, char c);

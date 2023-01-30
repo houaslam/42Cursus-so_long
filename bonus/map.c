@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 20:25:00 by houaslam          #+#    #+#             */
-/*   Updated: 2023/01/29 17:14:40 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/01/30 13:57:04 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	map_dup(t_mlx *mlx)
 	i = 0;
 	mlx->res = malloc(sizeof(char *) * mlx->win_y);
 	if (!mlx->res)
-		ft_putstr_fd("malloc fail");
+		ft_putstr_fd("ALLOCATION FAILED!!");
 	while (mlx->ptr[i])
 	{
 		mlx->res[i] = ft_strdup(mlx->ptr[i]);
@@ -38,7 +38,7 @@ void	check(t_mlx mlx)
 	map_dup(&mlx);
 	flood_fill(mlx.p_y, mlx.p_x, mlx, &data);
 	if (data.collect_n != mlx.collect_num || data.exit_n != 1)
-		ft_putstr_fd("invalid path");
+		ft_putstr_fd("INVALID PATH");
 	ft_free(mlx.res, mlx.win_y - 1);
 }
 

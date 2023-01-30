@@ -6,7 +6,7 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 21:08:54 by houaslam          #+#    #+#             */
-/*   Updated: 2023/01/29 17:14:53 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/01/30 13:57:52 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,13 @@ void	element_prot(char **av, t_mlx *mlx)
 			else if (av[son.i][son.j] == 'C')
 				mlx->collect_num++;
 			if (son.k > 1 || son.b > 1)
-				ft_putstr_fd("more than 1 PLAYER / EXIT");
+				ft_putstr_fd("MORE THAN 1 PLAYER / EXIT");
 			son.j++;
 		}
 		son.i++;
 	}
 	if (mlx->collect_num < 1 || son.k == 0 || son.b == 0)
-		ft_putstr_fd("less than 1 collectable/ exit/player");
+		ft_putstr_fd("LESS THAN 1 PLAYER /COLLECTIBALE/EXIT");
 }
 
 void	map_prot(t_mlx mlx)
@@ -69,10 +69,10 @@ void	map_prot(t_mlx mlx)
 		while (mlx.ptr[data.i][data.j])
 		{
 			if (ft_strlen(mlx.ptr[data.i]) - 1 != data.len)
-				ft_putstr_fd("maps is invalid");
+				ft_putstr_fd("MAP IS MISALIGNED");
 			if (mlx.ptr[0][data.j] != '1' || \
 			mlx.ptr[data.i][0] != '1' || mlx.ptr[data.i][data.len] != '1')
-				ft_putstr_fd("maps is invalid");
+				ft_putstr_fd("MAP SHOULD BE SURROUNDED BY WALLS");
 			data.j++;
 		}
 		data.i++;
@@ -87,9 +87,9 @@ void	map_prot2(t_mlx mlx, t_data data)
 	while (mlx.ptr[data.i][data.j])
 	{
 		if (mlx.ptr[data.i][data.j] != '1')
-			ft_putstr_fd("maps is invalid");
+			ft_putstr_fd("MAP SHOULD BE SURROUNDED BY WALLS");
 		data.j++;
 	}
 	if (data.i == data.j - 1)
-		ft_putstr_fd("map should be rectangulare");
+		ft_putstr_fd("MAP SHOULD BE RECTANGULAR");
 }
