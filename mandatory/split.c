@@ -6,11 +6,11 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 20:22:08 by houaslam          #+#    #+#             */
-/*   Updated: 2023/01/29 17:12:45 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/01/31 19:51:08 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../includes/so_long.h" 
 
 int	ft_dim1(char *s, char c)
 {

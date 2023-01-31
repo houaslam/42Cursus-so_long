@@ -6,11 +6,11 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 21:08:54 by houaslam          #+#    #+#             */
-/*   Updated: 2023/01/30 14:00:22 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/01/31 19:51:07 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h" 
+#include "../includes/so_long.h" 
 
 void	arg_prot(t_mlx *mlx, char **av)
 {

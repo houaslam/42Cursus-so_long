@@ -6,11 +6,11 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 14:43:45 by houaslam          #+#    #+#             */
-/*   Updated: 2023/01/29 17:19:05 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/01/31 19:50:11 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long_bonus.h" 
+#include "../includes/so_long_bonus.h"
 
 char	*ft_handle(char *buf)
 {

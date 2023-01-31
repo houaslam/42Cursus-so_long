@@ -6,11 +6,11 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/21 20:25:00 by houaslam          #+#    #+#             */
-/*   Updated: 2023/01/30 13:59:16 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/01/31 19:51:01 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h" 
+#include "../includes/so_long.h" 
 
 void	map_dup(t_mlx *mlx)
 {

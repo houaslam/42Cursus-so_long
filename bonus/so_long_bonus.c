@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   so_long_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 12:22:45 by houaslam          #+#    #+#             */
-/*   Updated: 2023/01/30 14:05:37 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/01/31 20:10:11 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mandatory/so_long.h" 
+#include "../includes/so_long_bonus.h" 
 
 int	ft_moves(int keycode, t_mlx *mlx)
 {
@@ -42,8 +42,6 @@ void	make_path(t_mlx *mlx, char **ptr)
 		}
 		mlx->x++;
 	}
-	element_prot(ptr, mlx);
-	check(*mlx);
 }
 
 void	read_data(t_mlx *mlx)
@@ -82,6 +80,8 @@ int	main(int ac, char **av)
 	mlx.img_x = 0;
 	mlx.steps = 0;
 	mlx.img_y = 0;
+	mlx.fram_n = 0;
+	mlx.f = 1;
 	mlx.mlx = mlx_init();
 	arg_prot(&mlx, av);
 	init(&mlx);
@@ -95,5 +95,6 @@ int	main(int ac, char **av)
 	mlx.wall, 0, 0);
 	mlx_hook(mlx.mlx_win, 17, 0, ft_exit, &mlx);
 	mlx_hook(mlx.mlx_win, 2, 0, ft_moves, &mlx);
+	mlx_loop_hook(mlx.mlx, enemy_ani, &mlx);
 	mlx_loop(mlx.mlx);
 }

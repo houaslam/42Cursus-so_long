@@ -6,11 +6,11 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 08:08:13 by houaslam          #+#    #+#             */
-/*   Updated: 2023/01/29 17:14:30 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/01/31 19:50:07 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long_bonus.h"
+#include "../includes/so_long_bonus.h"
 
 char	*ft_sign(long int nb, int j, char *str)
 {

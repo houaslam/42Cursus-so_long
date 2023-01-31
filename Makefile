@@ -6,7 +6,7 @@
 #    By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/16 12:10:20 by houaslam          #+#    #+#              #
-#    Updated: 2023/01/30 14:05:07 by houaslam         ###   ########.fr        #
+#    Updated: 2023/01/31 20:09:50 by houaslam         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRCS =  mandatory/get_next_line.c \
 		mandatory/outils.c \
 		mandatory/protection.c \
 		mandatory/split.c \
-		so_long.c
+		mandatory/so_long.c
 
 B_SRCS  =  	bonus/get_next_line.c \
 			bonus/ft_itoa.c \
@@ -34,7 +34,7 @@ B_SRCS  =  	bonus/get_next_line.c \
 			bonus/moves.c \
 			bonus/outils.c \
 			bonus/protection.c \
-			so_long_bonus.c \
+			bonus/so_long_bonus.c \
 			bonus/split.c
 all : ${NAME}
 

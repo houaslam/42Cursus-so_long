@@ -6,11 +6,11 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 13:28:29 by houaslam          #+#    #+#             */
-/*   Updated: 2023/01/29 17:10:37 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/01/31 19:49:59 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long_bonus.h"
+#include "../includes/so_long_bonus.h"
 
 int	frame(t_mlx *mlx)
 {

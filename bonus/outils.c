@@ -6,11 +6,11 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 13:51:43 by houaslam          #+#    #+#             */
-/*   Updated: 2023/01/30 18:04:37 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/01/31 20:41:48 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long_bonus.h" 
+#include "../includes/so_long_bonus.h"
 
 void	init(t_mlx *mlx)
 {
@@ -45,8 +45,12 @@ void	read_data1(t_mlx *mlx)
 	mlx->win_y = 1;
 	mlx->fin = NULL;
 	help = get_next_line(mlx->fd);
+	if (!help)
+		ft_putstr_fd("empty map\n");
 	while (1)
 	{
+		if (help[0] == '\n')
+			ft_putstr_fd("there is a new line\n");
 		mlx->fin = ft_strjoin(mlx->fin, help);
 		free(help);
 		help = get_next_line(mlx->fd);
@@ -88,7 +92,7 @@ void	put_element(char av, t_mlx *mlx)
 
 int	ft_exit(t_mlx *mlx)
 {
-	ft_printf("GAME OVER !!");
+	write(1, "GAME OVER !!", 13);
 	mlx_destroy_window(mlx->mlx, mlx->mlx_win);
 	exit(0);
 }

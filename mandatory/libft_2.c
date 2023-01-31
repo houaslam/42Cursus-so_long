@@ -6,11 +6,11 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 13:34:29 by houaslam          #+#    #+#             */
-/*   Updated: 2023/01/29 17:13:06 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/01/31 19:50:57 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../includes/so_long.h" 
 
 int	ft_strnstr(char *big, char *small)
 {

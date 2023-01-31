@@ -6,11 +6,11 @@
 /*   By: houaslam <houaslam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 02:43:29 by houaslam          #+#    #+#             */
-/*   Updated: 2023/01/30 18:39:29 by houaslam         ###   ########.fr       */
+/*   Updated: 2023/01/31 19:50:05 by houaslam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long_bonus.h" 
+#include "../includes/so_long_bonus.h"
 
 int	enemy(t_mlx *mlx)
 {
